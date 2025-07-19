@@ -1,12 +1,23 @@
-import { ChatInputCommandInteraction, SlashCommandBuilder, userMention, inlineCode } from "discord.js"
+import { ChatInputCommandInteraction, SlashCommandBuilder, userMention, inlineCode, MessageFlags } from "discord.js"
+import prisma from "../lib/prisma"
 
 const execute = async (interaction: ChatInputCommandInteraction) => {
   const task = interaction.options.getString("task")
   const user = interaction.options.getUser("user")
-
   if (!task || !user) return
-  
-  await interaction.reply(`Task ${inlineCode(task)} assigned to ${userMention(user.id)}`)
+
+  try {
+    await prisma.task.create({
+      data: {
+        name: task,
+        userId: parseInt(user.id)
+      }
+    })
+    await interaction.reply(`Task ${inlineCode(task)} assigned to ${userMention(user.id)}.`)
+  } catch (err) {
+    console.error(err)
+    await interaction.reply({ content: "An error occurred. Task not added.", flags: MessageFlags.Ephemeral })
+  }
 }
 
 export default {

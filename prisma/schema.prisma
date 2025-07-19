@@ -12,11 +12,6 @@ datasource db {
 model Task {
   id        Int       @id @default(autoincrement())
   name      String
-  userId    Int
+  userId    BigInt
   createdAt DateTime  @default(now())
-}
-
-model User {
-  id        Int       @id @default(autoincrement())
-  name      String
 }
