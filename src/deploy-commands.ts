@@ -1,6 +1,6 @@
 import { config } from "dotenv"
 import { REST, Routes } from "discord.js"
-import slashCommands from "./commands/"
+import commandList from "./commands"
 
 config()
 
@@ -16,16 +16,16 @@ const rest = new REST().setToken(token);
 
 (async () => {
 	try {
-    const commands = slashCommands.map(command => command.data.toJSON())
+    const commands = commandList.map(command => command.data.toJSON())
 
-		console.log(`Started refreshing ${slashCommands.length} application (/) commands.`);
+		console.log(`Started refreshing ${commandList.length} application (/) commands.`);
     
 		await rest.put(
 			Routes.applicationGuildCommands(clientId, guildId),
 			{ body: commands },
 		);
 
-		console.log(`Successfully reloaded ${slashCommands.length} application (/) commands.`);
+		console.log(`Successfully reloaded ${commandList.length} application (/) commands.`);
 	} catch (error) {
 		console.error(error);
 	}

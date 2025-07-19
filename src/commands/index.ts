@@ -1,15 +1,12 @@
 import { SlashCommandBuilder } from "discord.js";
-import commandList from "./list";
+import pingHandler from "./handlers/ping"
 
-export default commandList.map(command => {
-  const data = new SlashCommandBuilder()
-    .setName(command.name)
-    .setDescription(command.description)
-  
-  const execute = command.execute
-
-  return {
-    data,
-    execute
+export default [
+  {
+    name: "ping",
+    data: new SlashCommandBuilder()
+    .setName("ping")
+    .setDescription("Replies back with Pong!"),
+    execute: pingHandler
   }
-})
+]
