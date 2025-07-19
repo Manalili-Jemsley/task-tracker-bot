@@ -25,7 +25,7 @@ export default {
   data: new SlashCommandBuilder()
     .setName("add")
     .setDescription("Adds a task for a user.")
-    .addStringOption(option =>
+  .addStringOption(option =>
 		option
       .setName("task")
 			.setDescription("The task to be added.")
