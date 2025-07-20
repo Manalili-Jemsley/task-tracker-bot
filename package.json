@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx ./src/index.ts",
+    "start": "tsx ./src/index.ts",
     "deploy-commands": "tsx ./src/deploy-commands.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
