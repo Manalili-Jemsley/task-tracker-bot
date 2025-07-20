@@ -25,7 +25,7 @@ const execute = async (interaction: ChatInputCommandInteraction) => {
       }
     })
 
-    await interaction.reply(`Task ${inlineCode(`[${taskId.toString()} foundTask.name`)}] has been marked as complete by ${userMention(interaction.member.user.id)}.`)
+    await interaction.reply(`Task ${inlineCode(`[${taskId.toString()} ${foundTask.name}`)}] has been marked as complete by ${userMention(interaction.member.user.id)}.`)
   } catch (err) {
     console.error(err)
     await interaction.reply({ content: "An error occurred. Task not completed.", flags: MessageFlags.Ephemeral })
