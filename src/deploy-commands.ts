@@ -1,6 +1,6 @@
 import { config } from "dotenv"
 import { REST, Routes } from "discord.js"
-import commandList from "./commands"
+import commandList from "./commands/index.js"
 
 config()
 

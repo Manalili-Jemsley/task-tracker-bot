@@ -1,7 +1,7 @@
-import ping from "./ping";
-import add from "./add";
-import list from "./list";
-import complete from "./complete";
+import ping from "./ping.js";
+import add from "./add.js";
+import list from "./list.js";
+import complete from "./complete.js";
 
 export default [
   ping,

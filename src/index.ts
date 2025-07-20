@@ -1,6 +1,6 @@
 import { BaseInteraction, Client, Events, GatewayIntentBits, MessageFlags } from "discord.js"
 import { config } from "dotenv"
-import commandList from "./commands"
+import commandList from "./commands/index.js"
 
 config()
 const token = process.env.TOKEN

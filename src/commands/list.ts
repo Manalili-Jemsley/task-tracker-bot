@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder, userMention, inlineCode, MessageFlags, codeBlock } from "discord.js"
-import prisma from "../lib/prisma"
+import prisma from "../lib/prisma.js"
 
 const execute = async (interaction: ChatInputCommandInteraction) => {
   const user = interaction.options.getUser("user")
