@@ -2,7 +2,7 @@ import { ChatInputCommandInteraction, SlashCommandBuilder, userMention, inlineCo
 import prisma from "../lib/prisma.js"
 
 const execute = async (interaction: ChatInputCommandInteraction) => {
-  const task = interaction.options.getString("task")
+  const task = interaction.options.getString("task").trim()
   const user = interaction.options.getUser("user")
   if (!task || !user) return
 
