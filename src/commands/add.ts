@@ -2,18 +2,19 @@ import { ChatInputCommandInteraction, SlashCommandBuilder, userMention, inlineCo
 import prisma from "../lib/prisma.js"
 
 const execute = async (interaction: ChatInputCommandInteraction) => {
-  const task = interaction.options.getString("task").trim()
+  const task = interaction.options.getString("task") || ""
   const user = interaction.options.getUser("user")
   if (!task || !user) return
 
   try {
+    const taskTrimmed = task.trim()
     await prisma.task.create({
       data: {
-        name: task,
+        name: taskTrimmed,
         userId: parseInt(user.id)
       }
     })
-    await interaction.reply(`Task ${inlineCode(task)} assigned to ${userMention(user.id)}.`)
+    await interaction.reply(`Task ${inlineCode(taskTrimmed)} assigned to ${userMention(user.id)}.`)
   } catch (err) {
     console.error(err)
     await interaction.reply({ content: "An error occurred. Task not added.", flags: MessageFlags.Ephemeral })
