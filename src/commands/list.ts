@@ -15,7 +15,7 @@ const execute = async (interaction: ChatInputCommandInteraction) => {
     if (tasks.length === 0) return await interaction.reply(`${userMention(user.id)} has no tasks as of the moment.`)
 
     const lines = tasks.map(task => {
-      const createdAt = new Date().toLocaleDateString()
+      const createdAt = new Date(task.createdAt).toLocaleDateString()
       return `${createdAt}:       ${task.id}     ${task.name}`
     })
     lines.unshift("Date assigned    Id    Task")
